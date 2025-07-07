@@ -8,23 +8,71 @@ import time
 from PIL import Image
 st.set_page_config(
     page_title="Cloud Pattern Prediction",
-    page_icon="☁️",
+    page_icon="",
     layout="wide",
     initial_sidebar_state="expanded",
 )
 st.markdown("""
     <style>
-        /* Full App Background */
+        .css-18e3th9 { 
+            color: #0d47a1 !important;      
+            font-weight: 600 !important;    
+            font-size: 16px !important;     
+        }
+        .css-1v0mbdj {  
+            color: #0b3954 !important;        
+            font-weight: 700 !important;    
+        }
+        .css-18e3th9:hover {
+            background-color: rgba(13, 71, 161, 0.1) !important; 
+            border-radius: 8px;
+            transition: background-color 0.3s ease;
+        }
+        div.streamlit-expanderHeader {
+            background-color: #d6eaf8 !important; 
+            color: #003366 !important;
+            font-weight: bold;
+            border-radius: 8px;
+            padding: 8px;
+        }
+        div.streamlit-expanderContent {
+            background-color: #f0f4f8 !importan;
+            color: #333333 !important;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        div.streamlit-expanderContent p,
+        div.streamlit-expanderContent li {
+            color: #333333 !important;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+        details[open] > summary {
+            border: none;
+            background-color: #d6eaf8 !important;
+            border-radius: 8px;
+        }
+
+        .css-1d391kg {
+            background-color: #e0f7fa; 
+        }
+
+        .css-1d391kg h1, 
+        .css-1d391kg label, 
+        .css-1d391kg .stRadio label {
+            color: #003366 !important; 
+            font-weight: 600;
+        }
+
         .stApp {
-            background: linear-gradient(135deg, #e3f2fd, #ffffff);
+            background: linear-gradient(135deg, #e0f7fa, #f0f4f8);
             background-attachment: fixed;
             font-family: 'Arial', sans-serif;
             color: #333333;
         }
 
-        /* Main Content Container */
         .block-container {
-            background-color: rgba(255, 255, 255, 0.95);
+            background-color: rgba(255, 255, 255, 0.85);  
             padding: 2rem 3rem;
             border-radius: 16px;
             box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
@@ -32,35 +80,30 @@ st.markdown("""
             margin: auto;
         }
 
-        /* Headings */
         h1, h2, h3 {
-            color: #1565c0; /* Soft deep blue */
+            color: #0d47a1; 
             font-weight: 600;
             letter-spacing: 0.5px;
         }
 
-        /* Paragraphs and Text */
         p, li, label, .stMarkdown {
             color: #444444;
             font-size: 15px;
             line-height: 1.6;
         }
 
-        /* Images */
         img {
             border-radius: 12px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.08);
             max-width: 100%;
         }
 
-        /* Metric Cards */
         .stMetric {
-            background-color: rgba(255, 255, 255, 0.9);
+            background-color: rgba(240, 244, 248, 0.95); 
             border-radius: 10px;
             padding: 10px;
             box-shadow: 0 2px 6px rgba(0,0,0,0.1);
         }
-
     </style>
 
 """, unsafe_allow_html=True)
@@ -89,20 +132,18 @@ if page == "Home":
         "Outputs": "1–2 future cloud motion predictions",
         "Conditioning": "Sun angle, time of day, spectral attention",
         "Key Innovation": "Spatio-temporal learning + spectral fusion + efficient latent diffusion",
-        "Status": "Prototype Phase | Research Paper in Progress"
+        "Status": "Prototype Phase"
     }
     for key, value in model_info.items():
         st.markdown(f"**{key}:** {value}")
     st.markdown("---")
-    with st.expander("🛠️ How It Works (Click to Expand)"):
+    with st.expander("How It Works (Click to Expand)"):
         st.markdown("""
         Our **MC-RDDM** learns the complex patterns of **cloud evolution** by:
-        
         1. Analyzing **sequences of past satellite images** across multiple spectral channels (visible light, infrared, water vapor).
         2. Applying a **Residual Diffusion Model** to simulate realistic future cloud movement.
         3. Conditioning predictions on **auxiliary metadata** such as solar geometry and time of day.
         4. (Optionally) Compressing information using **latent space representations** for faster inference.
-
         The result is a system that can generate **future cloud images** that look and behave like real atmospheric patterns.
         """)
     st.markdown("---")
@@ -143,6 +184,8 @@ elif page == "Model Prediction":
             st.image(contrast_image, caption="Contrast Enhancement", use_column_width=True)
 
         st.markdown("---")
+        
+        st.video("src/gif.mp4",format="video/mp4")
 
         fig2 = px.line(forecast_df, x='Time', y='Predicted Cloud Coverage (%)',
                        title='Predicted Cloud Coverage Over Time',
