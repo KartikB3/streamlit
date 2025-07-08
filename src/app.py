@@ -176,12 +176,12 @@ elif page == "Model Prediction":
         with col1:
             st.subheader("Infrared (IR) Satellite Image")
             ir_image = Image.open("src/IR.jpeg")
-            st.image(ir_image, caption="IR Channel - Current Frame", use_column_width=True)
+            st.image(ir_image, caption="IR Channel - Current Frame", use_container_width=True)
 
         with col2:
             st.subheader("Contrast-enhanced Cloud Image")
             contrast_image = Image.open("src/contrast.jpeg")
-            st.image(contrast_image, caption="Contrast Enhancement", use_column_width=True)
+            st.image(contrast_image, caption="Contrast Enhancement", use_container_width=True)
 
         st.markdown("---")
         
