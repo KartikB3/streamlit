@@ -175,17 +175,17 @@ elif page == "Model Prediction":
 
         with col1:
             st.subheader("Infrared (IR) Satellite Image")
-            ir_image = Image.open("src/IR.jpeg")
+            ir_image = Image.open("assets/IR.jpeg")
             st.image(ir_image, caption="IR Channel - Current Frame", use_container_width=True)
 
         with col2:
             st.subheader("Contrast-enhanced Cloud Image")
-            contrast_image = Image.open("src/contrast.jpeg")
+            contrast_image = Image.open("assets/contrast.jpeg")
             st.image(contrast_image, caption="Contrast Enhancement", use_container_width=True)
 
         st.markdown("---")
         
-        st.video("src/gif.mp4",format="video/mp4")
+        st.video("assets/gif.mp4",format="video/mp4")
 
         fig2 = px.line(forecast_df, x='Time', y='Predicted Cloud Coverage (%)',
                        title='Predicted Cloud Coverage Over Time',
