@@ -239,7 +239,7 @@ elif page == "Metrics":
 
     st.markdown("---")
 
-    st.subheader("📈 Metric Trends (Sample)")
+    st.subheader("Metric Trends (Sample)")
     sample_steps = np.arange(1, 6)
     sample_ssim = [0.85, 0.82, 0.80, 0.77, 0.74]
 
@@ -267,7 +267,7 @@ elif page == "Model Insights":
         This design ensures that spatial, temporal, and spectral features are all captured, improving both accuracy and generalizability.
     """)
 
-    st.image("assets/model_diagram.png", caption="Architecture: MetaConditioned RDDM", use_container_width=True)
+    st.image("assets/architechure.png", caption="Architecture: MetaConditioned RDDM", use_container_width=True)
     
 elif page == "Visualization":
     st.title("Model Parameters and Distributions")
@@ -284,13 +284,13 @@ elif page == "Visualization":
 
     st.dataframe(params)
 
-    st.subheader("🎯 Parameter Impact Heatmap (Seaborn)")
+    st.subheader("Parameter Impact Heatmap")
     heat_data = np.random.rand(5, 5)
     fig, ax = plt.subplots()
     sns.heatmap(heat_data, annot=True, cmap="Blues", ax=ax)
     st.pyplot(fig)
 
-    st.subheader("🚀 Parameter Importance (Plotly Bar Chart)")
+    st.subheader("Parameter Importance")
     importance_df = pd.DataFrame({
         'Parameter': ['Learning Rate', 'Batch Size', 'Noise Level', 'Timesteps', 'Attention Heads'],
         'Importance': [0.6, 0.1, 0.15, 0.1, 0.05]
@@ -298,7 +298,7 @@ elif page == "Visualization":
     fig_bar = px.bar(importance_df, x='Parameter', y='Importance', color='Parameter')
     st.plotly_chart(fig_bar, use_container_width=True)
 
-    st.subheader("🔄 Parameter Trends (Altair Line Chart)")
+    st.subheader("Parameter Trends")
     alt_data = pd.DataFrame({
         'Step': np.arange(1, 11),
         'Learning Rate': np.linspace(0.001, 0.0001, 10),
